@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar bg-primary sideAnim">
+  <div class="sidebar bg-primary ">
   <img src="./img/woman-avatar.jpeg" class="avatar_profile" alt="ERROR"/>
   <p class="text_25 light_color py-1" >Alexa Doe</p>
      <div class="d-flex">
@@ -28,7 +28,7 @@ export default {
 
 <style scoped >
 .sidebar{
-    width: 35%;
+    width: 350px;
     height: 100vh;
     display: flex;
     flex-direction: column;

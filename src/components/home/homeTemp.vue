@@ -5,7 +5,7 @@
             <burgerMenu class="burgerMenu" />
       </div>
       <div class="dataBox">
-            <h1>Homssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssse</h1>
+          
       </div>
   </div>
 </template>
@@ -25,12 +25,17 @@ export default {
     display: flex;
 }
 .dataBox{
-    width: 50%;
+    width: 85%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    background: yellow;
+    overflow: scroll;
 }
 .sideBox{
-    width: 50%;
+    width: 15%;
+     display: flex;
 }
 .burgerMenu{display: none;}
 @media (max-width: 800px) {
