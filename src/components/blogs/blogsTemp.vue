@@ -1,7 +1,12 @@
 <template>
-  <div class="blogsTemp">
-      <sidebar class="sidebar" />
-      <burgerMenu class="burgerMenu" />
+  <div class="temp">
+      <div class="sideBox">
+            <sidebar class="sidebar" />
+            <burgerMenu class="burgerMenu" />
+      </div>
+      <div class="dataBox">
+          
+      </div>
   </div>
 </template>
 
@@ -14,9 +19,27 @@ export default {
 </script>
 
 <style scoped >
+.temp{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+.dataBox{
+    width: 85%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.sideBox{
+    width: 350px;
+    display: flex;
+}
 .burgerMenu{display: none;}
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     .sidebar{display: none;}
     .burgerMenu{display: inline;}
+    .temp{flex-direction: column;}
+    .dataBox{width: 100%;}
 }
 </style>

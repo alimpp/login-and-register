@@ -43,7 +43,7 @@
 
 /* anim */
 .opacityAnim{
-    animation: 2s opacityAnim;
+    animation: 1s opacityAnim;
 }
 @keyframes opacityAnim {
     0%{opacity: 0;}
@@ -56,4 +56,6 @@
     0%{width: 50px;}100%{width: 350px;}
 }
 /* anim */
+
+.container{height: 90vh; overflow: scroll;}
 
