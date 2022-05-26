@@ -1,0 +1,59 @@
+/* main */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.avatar{
+    width: 45px;
+    height: 35px;
+    border-radius: 50%;
+}
+.avatar_profile{
+    width: 180px;
+    height: 150px;
+    border-radius: 50%;
+}
+.img{border-radius: 10px;}
+/* main */
+
+/* scroll bar */
+::-webkit-scrollbar{width: 2px;}
+::-webkit-scrollbar-track{background-color: #fafafa;border-radius: 50px;}
+::-webkit-scrollbar-thumb{background-color: #112B3C; border-radius: 50px;} 
+/* scroll bar */
+
+/* colors */
+.dark_color{color: #303030 ;}
+.light_color{color: #fff;}
+.primary_color{color: #6A67CE;}
+.danger_color{color: #FF1818;}
+.warning_color{color: orange;}
+.hotNews_bg{background: #dcdcdc;}
+.danger_bg{background: #FF1818;}
+/* colors */
+
+/* text */
+.text_25{font-size: 25px; font-weight: 500;}
+.text_20{font-size: 20px; font-weight: 300;}
+.text_18{font-size: 18px; font-weight: 100;}
+.text_13{font-size: 13px; font-weight: 100;}
+/* text */
+
+/* anim */
+.opacityAnim{
+    animation: 2s opacityAnim;
+}
+@keyframes opacityAnim {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+.sideAnim{
+    animation: 1s sideAnim;
+}
+@keyframes sideAnim {
+    0%{width: 50px;}100%{width: 350px;}
+}
+/* anim */
+
