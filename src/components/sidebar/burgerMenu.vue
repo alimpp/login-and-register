@@ -44,9 +44,6 @@
     <div class="d-flex">
     <i class="bi bi-newspaper pt-2 text_18 light_color"></i><router-link to="/news" class="nav-link light_color text_18">News</router-link>
     </div>
-    <div class="d-flex">
-    <i class="bi bi-blockquote-left pt-2 text_18 light_color"></i> <router-link to="/blogs" class="nav-link light_color text_18">My Blogs</router-link>
-    </div>
       </div>
     </div>
   </div>
