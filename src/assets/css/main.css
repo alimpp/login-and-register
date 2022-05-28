@@ -50,7 +50,7 @@
     100%{opacity: 1;}
 }
 .sideAnim{
-    animation: 1s sideAnim;
+    animation: 0.5s sideAnim;
 }
 @keyframes sideAnim {
     0%{width: 50px;}100%{width: 350px;}
@@ -65,6 +65,6 @@
     transition: 0.5s;   
 }
 .card_hover:hover{
-    background: #e6e6e6;
+    background: #d5d5d5;
 }
 /* card hover */

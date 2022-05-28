@@ -1,25 +1,23 @@
 <template>
   <div class="temp">
       <div class="sideBox">
-            <sidebar class="sidebar" />
+            <sidebar class="sidebar sideAnim" />
             <burgerMenu class="burgerMenu" />
       </div>
       <div class="dataBox">
          <div class="container opacityAnim">
-             <hotNews/>
-             <div class="col-sm-12" v-for="data in getData" :key="data.id">
-                <div class="card mb-3" style="border:none;">
-                    <div class="d-flex">
-                        <img src="./img/woman-avatar.jpeg" class="avatar my-2" alt="ERROR">
-                        <p class="text_20 px-2 pt-3">{{data.author}}</p>
-                    </div>
-                    <img :src="data.urlToImage" class="card-img-top" alt="ERROR">
-                    <div class="card-body">
-                        <h5 class="card-title">{{data.title}}</h5>
-                        <p class="card-text"><small class="text-muted">Last updated {{data.publishedAt}}</small></p>
-                    </div>
-                </div>
+             <hotNews class="mb-2"/>
+             <div class="d-flex my-3">
+             <p class="text_25 mx-3" style="cursor: pointer; " @click="getNews">News</p> 
+             <p class="text_20">/</p> 
+             <p class="text_25 mx-3" style="cursor: pointer; " @click="getPosts">Posts</p>
+              <p class="text_20">/</p> 
+              <p class="text_25 mx-3" style="cursor: pointer; " @click="getEmails">Emails</p> 
+              <hr>
              </div>
+             <newsComponent v-if="news"/>
+             <postsComponent v-if="posts"/>
+             <emailsComponent v-if="emails"/>
          </div>
       </div>
   </div>
@@ -29,16 +27,36 @@
 import sidebar from '../sidebar/sidebar.vue'
 import burgerMenu from '../sidebar/burgerMenu.vue'
 import hotNews from '../hotNews.vue'
+import newsComponent from './dataComponent/newsComponent.vue'
+import postsComponent from './dataComponent/postsComponent.vue'
+import emailsComponent from './dataComponent/emailsComponent.vue'
 export default {
-   components : {sidebar , burgerMenu , hotNews} , 
-   computed : {
-      getData(){
-          return this.$store.getters['News/GET_DATA']
-      }
-   } ,
-   mounted(){
-       return this.$store.dispatch('News/FETCH_DATA')
+    data(){
+        return{
+            news : true , 
+            posts : false , 
+            emails : false ,
+        }
+    } ,
+   components : {sidebar , burgerMenu , hotNews , newsComponent , postsComponent , emailsComponent} ,  
+   methods: {
+       getNews(){
+           this.news = true  
+           this.posts = false  
+           this.emails = false 
+       } , 
+       getPosts(){
+           this.news = false 
+           this.posts = true 
+           this.emails = false 
+       } , 
+       getEmails(){
+           this.news = false 
+           this.posts = false 
+           this.emails = true 
+       }
    }
+  
 }
 </script>
 
