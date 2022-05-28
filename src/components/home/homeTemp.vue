@@ -5,7 +5,7 @@
             <burgerMenu class="burgerMenu" />
       </div>
       <div class="dataBox">
-        <div class="container opacityAnim">
+        <div class="container opacityAnim p-4">
             <div class="row">
                 <div class="textBox">
                   <p class="text_25">Welcome To My Website</p>
@@ -16,8 +16,9 @@
                       <a href="http://freerealapi.com/docs#get-all-fake-blogs" class="btn btn-dark">Watch Api Data</a>
                   </div>
                 </div>
+                <hr>
                 <div class="col-sm-6" v-for="data in getData" :key="data.id">
-                  <div class="card mb-3" style="max-width: 540px;">
+                  <div class="card mb-3 card_hover" style="max-width: 540px;">
                     <div class="row">
                         <div class="col-md-4">
                         <img :src="data.image" style="height:200px; width:100%;" class="img-fluid rounded-start" alt="ERROR">

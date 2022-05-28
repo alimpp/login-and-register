@@ -6,8 +6,8 @@
     font-family: sans-serif;
 }
 .avatar{
-    width: 45px;
-    height: 35px;
+    width: 60px;
+    height: 50px;
     border-radius: 50%;
 }
 .avatar_profile{
@@ -59,3 +59,12 @@
 
 .container{height: 90vh; overflow: scroll;}
 
+/* card hover */
+.card_hover{
+    cursor: pointer; 
+    transition: 0.5s;   
+}
+.card_hover:hover{
+    background: #e6e6e6;
+}
+/* card hover */
