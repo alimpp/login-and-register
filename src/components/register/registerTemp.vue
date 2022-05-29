@@ -20,9 +20,6 @@
          <p class="text_18">Password</p>
          <input type="" class="form-control" v-model="password">
         <p class="text_18 danger_color" v-if="passwordRequired">{{passwordRequiredText}}</p>
-        <p class="text_18">Confrim Password</p>
-        <input type="" class="form-control" v-model="confrimPassword">
-        <p class="text_18 danger_color" v-if="passwordRequired">{{confrimPasswordRequiredText}}</p>
          <div class="d-flex">
          <button class="btn btn-primary mt-2" @click="register">Register</button>
          <router-link to="/login" class="btn btn-warning mt-2 mx-2">Login</router-link>
@@ -44,8 +41,6 @@ export default {
         emailRequiredText : "Email is Required" , 
         passwordRequired : false , 
         passwordRequiredText : "Password is Required" , 
-        confrimPasswordRequired : false ,
-        confrimPasswordRequiredText : "Confrim Password is Required"
       }
     } , 
     methods : {
@@ -61,11 +56,6 @@ export default {
           this.passwordRequired = true
         } else if(this.password.length < 5){
           this.passwordRequired = true
-        } else if(this.confrimPassword === ""){
-           this.confrimPasswordRequired = true
-        } else if(this.confrimPassword === this.password){
-          this.passwordRequired = true 
-          this.confrimPasswordRequired = true
         } else{
           this.emailRequired = false 
           this.passwordRequired = false 
