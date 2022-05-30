@@ -14,58 +14,59 @@
      </div>
      <div class="formBox p-4 opacityAnim">
          <p class="text_25">Register With News</p>
-         <p class="text_18">Email</p>
-         <input type="email" class="form-control" v-model="email">
-         <p class="text_18 danger_color" v-if="emailRequired">{{emailRequiredText}}</p>
+         <p class="text_18">Username</p>
+         <input type="text" :class="{'input_error': inputErrorUsername}" class="form-control" v-model="username">
          <p class="text_18">Password</p>
-         <input type="" class="form-control" v-model="password">
-        <p class="text_18 danger_color" v-if="passwordRequired">{{passwordRequiredText}}</p>
+         <input type="password" :class="{'input_error': inputErrorPassword}" class="form-control" v-model="password">
          <div class="d-flex">
          <button class="btn btn-primary mt-2" @click="register">Register</button>
-         <router-link to="/login" class="btn btn-warning mt-2 mx-2">Login</router-link>
-         <div class="d-flex" style="margin:18px 10px;">
-         </div>
+        <router-link to="/login" class="btn btn-warning mt-2 mx-2" >Login</router-link>
          </div>
      </div>
   </div>
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 export default {
     data(){
       return{
-        email : "" , 
-        password : "" , 
-        confrimPassword : "" ,
-        emailRequired : false ,
-        emailRequiredText : "Email is Required" , 
-        passwordRequired : false , 
-        passwordRequiredText : "Password is Required" , 
+        username : "" , inputErrorUsername : false , 
+        password : "" , inputErrorPassword : false ,
       }
     } , 
     methods : {
       register(){
-        if(this.email === "" && this.password === ""){
-          this.emailRequired = true
-          this.passwordRequired = true
-        }else if(this.email === ""){
-            this.emailRequired = true
-        } else if(this.email.length < 5){ 
-            this.emailRequired = true
-        } else if(this.password === ""){
-          this.passwordRequired = true
-        } else if(this.password.length < 5){
-          this.passwordRequired = true
-        } else{
-          this.emailRequired = false 
-          this.passwordRequired = false 
-          this.confrimPasswordRequired = false 
-          this.$router.push("/news")
-        }
+         if(this.username.length < 5){
+           this.inputErrorUsername = true
+             Swal.fire({
+               position: 'top',
+               icon: 'warning',
+               title: 'The Username must be longer than 5 characters',
+               showConfirmButton: false,
+               timerProgressBar : true , 
+               toast : true , 
+               timer: 4000
+              })
+         }else{this.inputErrorUsername = false}
+
+         if(this.password.length < 8){
+           this.inputErrorPassword = true 
+             Swal.fire({
+               position: 'top',
+               icon: 'warning',
+               title: 'The Password must be longer than 8 characters',
+               showConfirmButton: false,
+               timerProgressBar : true , 
+               toast : true , 
+               timer: 4000
+              })
+         }else{this.inputErrorPassword = false} 
+         
       }
     }
 }
-</script>
+</script> 
 
 <style scoped >
 .registerTemp{
@@ -86,6 +87,9 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.input_error{
+  border: 1px solid #FF1818;
 }
 @media (max-width: 800px) {
   .textBox{display: none;}
