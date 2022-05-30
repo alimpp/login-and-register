@@ -40,32 +40,32 @@ export default {
     methods : {
       login(){
         
-         if(this.username.length < 5){
-           this.inputErrorUsername = true
-             Swal.fire({
-               position: 'top',
-               icon: 'warning',
-               title: 'The Username must be longer than 5 characters',
-               showConfirmButton: false,
-               timerProgressBar : true , 
-               toast : true , 
-               timer: 4000
-              })
-         }else{this.inputErrorUsername = false}
+        //  if(this.username.length < 5){
+        //    this.inputErrorUsername = true
+        //      Swal.fire({
+        //        position: 'top',
+        //        icon: 'warning',
+        //        title: 'The Username must be longer than 5 characters',
+        //        showConfirmButton: false,
+        //        timerProgressBar : true , 
+        //        toast : true , 
+        //        timer: 4000
+        //       })
+        //  }else{this.inputErrorUsername = false}
 
-         if(this.password.length < 8){
-           this.inputErrorPassword = true 
-             Swal.fire({
-               position: 'top',
-               icon: 'warning',
-               title: 'The Password must be longer than 8 characters',
-               showConfirmButton: false,
-               timerProgressBar : true , 
-               toast : true , 
-               timer: 4000
-              })
-         }else{this.inputErrorPassword = false} 
-
+        //  if(this.password.length < 8){
+        //    this.inputErrorPassword = true 
+        //      Swal.fire({
+        //        position: 'top',
+        //        icon: 'warning',
+        //        title: 'The Password must be longer than 8 characters',
+        //        showConfirmButton: false,
+        //        timerProgressBar : true , 
+        //        toast : true , 
+        //        timer: 4000
+        //       })
+        //  }else{this.inputErrorPassword = false} 
+           this.$store.commit('Login/LOGIN' , '123456')
       }
     }
 }

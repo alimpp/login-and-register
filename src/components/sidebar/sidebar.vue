@@ -14,12 +14,17 @@
     <div class="d-flex">
     <i class="bi bi-newspaper pt-2 text_18 light_color"></i><router-link to="/news" class="nav-link light_color text_18">News</router-link>
     </div>
-  </div>
+    <button class="btn btn-danger mt-5" @click="logOut"> <i class="bi bi-box-arrow-left px-1"></i>Log Out</button>
+  </div> 
 </template>
 
 <script>
 export default {
-
+    methods : {
+         logOut(){
+           return this.$store.commit('Login/LOGOUT')
+         }
+    }
 }
 </script>
 

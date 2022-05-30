@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import store from './store'
 import login from '../views/login'
 import register from '../views/register'
 import news from '../views/news'
@@ -7,7 +8,14 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: home
+    component: home ,
+    meta: { loginRequired: false }
+  },
+  {
+    path: '/news',
+    name: 'news',
+    component: news , 
+    meta: { loginRequired: false }
   },
   {
     path: '/login',
@@ -19,16 +27,21 @@ const routes = [
     name: 'register',
     component: register
   },
-  {
-    path: '/news',
-    name: 'news',
-    component: news
-  },
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from , next) => {
+  
+      if(to.matched.some(record => record.meta.loginRequired)){
+           if(store.state.isAuth){
+             next()
+           }
+      }
+
 })
 
 export default router

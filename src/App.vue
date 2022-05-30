@@ -1,12 +1,19 @@
 <template>
+<div>
   <router-view></router-view>
+</div>
 </template>
 
 <script>
 
 export default {
+     watch : {
+         $route(){
+           this.$store.commit('Login/ON_START')
+         }
+     } ,
      mounted(){
-       return this.$router.push('/login')
+         this.$store.commit('Login/ON_START')
      }
 }
 </script>
