@@ -37,6 +37,9 @@ export default {
         password : "" , inputErrorPassword : false ,
       }
     } , 
+    computed : {
+      
+    } ,
     methods : {
       login(){
         
@@ -66,6 +69,7 @@ export default {
         //       })
         //  }else{this.inputErrorPassword = false} 
            this.$store.commit('Login/LOGIN' , '123456')
+           this.$router.push('/')
       }
     }
 }

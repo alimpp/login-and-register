@@ -6,8 +6,8 @@ const Login = {
             token : "" , 
         },
         getters : {
-             watchSatate(state){
-                 return state
+             watchAuth(state){
+                 return state.isAuth
              }
         } , 
         mutations: {

@@ -54,7 +54,8 @@
 export default {
  methods : {
          logOut(){
-           return this.$store.commit('Login/LOGOUT')
+           this.$store.commit('Login/LOGOUT')
+           this.$router.push('/login')
          }
     }
 }
