@@ -2,11 +2,13 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
+import axios from 'axios'
 import 'bootstrap/dist/js/bootstrap.bundle'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 import './assets/css/main.css'
+
+axios.defaults.baseURL = 'https://django-app-template.alihassani.repl.co/apiv1'
 
 createApp(App).use(store).use(router).mount('#app')

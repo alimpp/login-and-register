@@ -30,6 +30,7 @@
 
 <script>
 import Swal from 'sweetalert2'
+import axios from 'axios'
 export default {
     data(){
       return{
@@ -42,34 +43,44 @@ export default {
     } ,
     methods : {
       login(){
-        
-        //  if(this.username.length < 5){
-        //    this.inputErrorUsername = true
-        //      Swal.fire({
-        //        position: 'top',
-        //        icon: 'warning',
-        //        title: 'The Username must be longer than 5 characters',
-        //        showConfirmButton: false,
-        //        timerProgressBar : true , 
-        //        toast : true , 
-        //        timer: 4000
-        //       })
-        //  }else{this.inputErrorUsername = false}
+        let accses = true
+        if(this.username.length < 5){
+          accses = false
+          this.inputErrorUsername = true
+            Swal.fire({
+              position: 'top',
+              icon: 'warning',
+              title: 'The Username must be longer than 5 characters',
+              showConfirmButton: false,
+              timerProgressBar : true , 
+              toast : true , 
+              timer: 4000
+             })
+        }else{this.inputErrorUsername = false}
 
-        //  if(this.password.length < 8){
-        //    this.inputErrorPassword = true 
-        //      Swal.fire({
-        //        position: 'top',
-        //        icon: 'warning',
-        //        title: 'The Password must be longer than 8 characters',
-        //        showConfirmButton: false,
-        //        timerProgressBar : true , 
-        //        toast : true , 
-        //        timer: 4000
-        //       })
-        //  }else{this.inputErrorPassword = false} 
-           this.$store.commit('Login/LOGIN' , '123456')
-           this.$router.push('/')
+        if(this.password.length < 8){
+          accses = false
+          this.inputErrorPassword = true 
+            Swal.fire({
+              position: 'top',
+              icon: 'warning',
+              title: 'The Password must be longer than 8 characters',
+              showConfirmButton: false,
+              timerProgressBar : true , 
+              toast : true , 
+              timer: 4000
+             })
+        }else{this.inputErrorPassword = false} 
+
+           if(accses){
+            axios.post(`https://django-app-template.alihassani.repl.co/apiv1/login/` , {username : this.username , password : this.password})
+            .then( response => {
+              this.$store.commit('Login/LOGIN' , response.data.access)
+              this.$router.push('/')
+            })
+            .catch(console.log("ERROR"))
+           }
+
       }
     }
 }

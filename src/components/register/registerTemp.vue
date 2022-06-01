@@ -17,7 +17,7 @@
          <p class="text_18">Username</p>
          <input type="text" :class="{'input_error': inputErrorUsername}" class="form-control" v-model="username">
          <p class="text_18">Password</p>
-         <input type="password" :class="{'input_error': inputErrorPassword}" class="form-control" v-model="password">
+         <input type="text" :class="{'input_error': inputErrorPassword}" class="form-control" v-model="password">
          <div class="d-flex">
          <button class="btn btn-primary mt-2" @click="register">Register</button>
         <router-link to="/login" class="btn btn-warning mt-2 mx-2" >Login</router-link>
@@ -28,6 +28,7 @@
 
 <script>
 import Swal from 'sweetalert2'
+import axios from 'axios'
 export default {
     data(){
       return{
@@ -37,32 +38,44 @@ export default {
     } , 
     methods : {
       register(){
-         if(this.username.length < 5){
-           this.inputErrorUsername = true
-             Swal.fire({
-               position: 'top',
-               icon: 'warning',
-               title: 'The Username must be longer than 5 characters',
-               showConfirmButton: false,
+          let accses = true
+          if(this.username.length < 5){
+            accses = false
+            this.inputErrorUsername = true
+              Swal.fire({
+                position: 'top',
+                icon: 'warning',
+                title: 'The Username must be longer than 5 characters',
+                showConfirmButton: false,
                timerProgressBar : true , 
-               toast : true , 
-               timer: 4000
-              })
-         }else{this.inputErrorUsername = false}
+                toast : true , 
+                timer: 4000
+               })
+          }else{this.inputErrorUsername = false}
 
-         if(this.password.length < 8){
-           this.inputErrorPassword = true 
-             Swal.fire({
-               position: 'top',
-               icon: 'warning',
-               title: 'The Password must be longer than 8 characters',
-               showConfirmButton: false,
-               timerProgressBar : true , 
-               toast : true , 
-               timer: 4000
-              })
-         }else{this.inputErrorPassword = false} 
-         
+          if(this.password.length < 8){
+            accses = false
+            this.inputErrorPassword = true 
+              Swal.fire({
+                position: 'top',
+                icon: 'warning',
+                title: 'The Password must be longer than 8 characters',
+                showConfirmButton: false,
+                timerProgressBar : true , 
+                toast : true , 
+                timer: 4000
+               })
+          }else{this.inputErrorPassword = false} 
+
+          if(accses){
+            axios.post(`https://django-app-template.alihassani.repl.co/apiv1/register/` , {username : this.username , password : this.password})
+            .then( response => {
+               console.log(response)
+               this.$router.push('/login')
+            })
+            .catch(console.log("ERROR"))
+          }
+          
       }
     }
 }
