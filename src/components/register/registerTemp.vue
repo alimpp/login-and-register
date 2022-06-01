@@ -70,7 +70,6 @@ export default {
           if(accses){
             axios.post(`https://django-app-template.alihassani.repl.co/apiv1/register/` , {username : this.username , password : this.password})
             .then( response => {
-               console.log(response)
                this.$router.push('/login')
             })
             .catch(console.log("ERROR"))
