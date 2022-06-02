@@ -72,7 +72,17 @@ export default {
             .then( response => {
                this.$router.push('/login')
             })
-            .catch(console.log("ERROR"))
+            .catch(
+               Swal.fire({
+                position: 'top',
+                icon: 'warning',
+                title: 'User could not be registered',
+                showConfirmButton: false,
+               timerProgressBar : true , 
+                toast : true , 
+                timer: 4000
+               })
+            )
           }
           
       }

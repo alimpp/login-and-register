@@ -78,7 +78,17 @@ export default {
               this.$store.commit('Login/LOGIN' , response.data.access)
               this.$router.push('/')
             })
-            .catch(console.log("ERROR"))
+            .catch(
+              Swal.fire({
+                position: 'top',
+                icon: 'warning',
+                title: 'Unregistered User Please Registered',
+                showConfirmButton: false,
+               timerProgressBar : true , 
+                toast : true , 
+                timer: 4000
+               })
+            )
            }
 
       }
