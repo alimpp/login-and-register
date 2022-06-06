@@ -35,7 +35,7 @@
                         </div>
                     </div>
                    </div>
-                </div>
+                </div> 
             </div>
         </div>
       </div>
@@ -53,7 +53,7 @@ export default {
        }
    } , 
    mounted(){
-       return this.$store.dispatch('Home/FETCH_DATA')
+       this.$store.dispatch('Home/FETCH_DATA')
    }
 }
 </script>
