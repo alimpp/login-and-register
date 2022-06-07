@@ -79,15 +79,7 @@ export default {
               this.$router.push('/')
             })
             .catch(
-              Swal.fire({
-                position: 'top',
-                icon: 'warning',
-                title: 'Unregistered User Please Registered',
-                showConfirmButton: false,
-               timerProgressBar : true , 
-                toast : true , 
-                timer: 4000
-               })
+                 // need alert for user
             )
            }
 

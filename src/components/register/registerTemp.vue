@@ -73,15 +73,7 @@ export default {
                this.$router.push('/login')
             })
             .catch(
-               Swal.fire({
-                position: 'top',
-                icon: 'warning',
-                title: 'User could not be registered',
-                showConfirmButton: false,
-               timerProgressBar : true , 
-                toast : true , 
-                timer: 4000
-               })
+              // need alert for user
             )
           }
           
