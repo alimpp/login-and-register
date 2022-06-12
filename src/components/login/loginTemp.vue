@@ -16,8 +16,10 @@
          <p class="text_25">Login With News</p>
          <p class="text_18">Username</p>
          <input type="text" :class="{'input_error': inputErrorUsername}" class="form-control" v-model="username">
+         <p class="danger_color text_13 mt-2" v-if="inputErrorUsername">{{usernameTextError}}</p>
          <p class="text_18">Password</p>
          <input type="password" :class="{'input_error': inputErrorPassword}" class="form-control" v-model="password">
+         <p class="danger_color text_13 mt-2" v-if="inputErrorPassword">{{passwordTextError}}</p>
          <div class="d-flex">
          <button class="btn btn-primary mt-2" @click="login">Login in</button>
          <div class="d-flex mt-3 mx-2">
@@ -34,8 +36,8 @@ import axios from 'axios'
 export default {
     data(){
       return{
-        username : "" , inputErrorUsername : false , 
-        password : "" , inputErrorPassword : false ,
+        username : "" , inputErrorUsername : false ,  usernameTextError : "Username is Required...!" ,
+        password : "" , inputErrorPassword : false , passwordTextError : "Password is Required...!"
       }
     } , 
     computed : {
@@ -73,7 +75,7 @@ export default {
         }else{this.inputErrorPassword = false} 
 
            if(accses){
-            axios.post(`https://django-app-template.alihassani.repl.co/apiv1/login/` , {username : this.username , password : this.password})
+            axios.post(`https://ali128-register.iran.liara.run/apiv1/login/` , {username : this.username , password : this.password})
             .then( response => {
               this.$store.commit('Login/LOGIN' , response.data.access)
               this.$router.push('/')
