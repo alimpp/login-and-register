@@ -63,6 +63,15 @@ export default {
            if(accses){
             axios.post(`https://api.freerealapi.com/auth/login/` , {email : this.email , password : this.password})
             .then( response => {
+                Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: 'Login is Done',
+                showConfirmButton: false,
+                timerProgressBar : true , 
+                toast : true , 
+                timer: 4000
+                })
               this.$store.commit('Login/LOGIN' , response.data.token)
               this.$router.push('/')
             })
