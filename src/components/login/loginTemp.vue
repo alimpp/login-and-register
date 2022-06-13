@@ -14,18 +14,22 @@
      </div>
      <div class="formBox p-4 opacityAnim">
          <p class="text_25">Login With News</p>
-         <p class="text_18">Username</p>
-         <input type="text" :class="{'input_error': inputErrorUsername}" class="form-control" v-model="username">
-         <p class="danger_color text_13 mt-2" v-if="inputErrorUsername">{{usernameTextError}}</p>
+
+         <p class="text_18">Email</p>
+         <input type="text" :class="{'input_error': inputErrorEmail}" class="form-control" v-model="email">
+         <p class="danger_color text_13 mt-2" v-if="inputErrorEmail">{{emailTextError}}</p>
+
          <p class="text_18">Password</p>
          <input type="password" :class="{'input_error': inputErrorPassword}" class="form-control" v-model="password">
          <p class="danger_color text_13 mt-2" v-if="inputErrorPassword">{{passwordTextError}}</p>
+
          <div class="d-flex">
          <button class="btn btn-primary mt-2" @click="login">Login in</button>
          <div class="d-flex mt-3 mx-2">
          <router-link to="/register">Do you have account ?</router-link>
          </div>
          </div>
+
      </div>
   </div>
 </template>
@@ -36,7 +40,7 @@ import axios from 'axios'
 export default {
     data(){
       return{
-        username : "" , inputErrorUsername : false ,  usernameTextError : "Username is Required...!" ,
+        email : "" , inputErrorEmail : false ,  emailTextError : "Email is Required...!" ,
         password : "" , inputErrorPassword : false , passwordTextError : "Password is Required...!"
       }
     } , 
@@ -46,38 +50,20 @@ export default {
     methods : {
       login(){
         let accses = true
-        if(this.username.length < 5){
+        if(this.email.length < 8){
           accses = false
-          this.inputErrorUsername = true
-            Swal.fire({
-              position: 'top',
-              icon: 'warning',
-              title: 'The Username must be longer than 5 characters',
-              showConfirmButton: false,
-              timerProgressBar : true , 
-              toast : true , 
-              timer: 4000
-             })
-        }else{this.inputErrorUsername = false}
+          this.inputErrorEmail = true
+        }else{this.inputErrorEmail = false}
 
         if(this.password.length < 8){
           accses = false
           this.inputErrorPassword = true 
-            Swal.fire({
-              position: 'top',
-              icon: 'warning',
-              title: 'The Password must be longer than 8 characters',
-              showConfirmButton: false,
-              timerProgressBar : true , 
-              toast : true , 
-              timer: 4000
-             })
         }else{this.inputErrorPassword = false} 
 
            if(accses){
-            axios.post(`https://ali128-register.iran.liara.run/apiv1/login/` , {username : this.username , password : this.password})
+            axios.post(`https://api.freerealapi.com/auth/login/` , {email : this.email , password : this.password})
             .then( response => {
-              this.$store.commit('Login/LOGIN' , response.data.access)
+              this.$store.commit('Login/LOGIN' , response.data.token)
               this.$router.push('/')
             })
             .catch(

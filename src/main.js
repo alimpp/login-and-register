@@ -9,6 +9,4 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 
 import './assets/css/main.css'
 
-axios.defaults.baseURL = 'https://ali128-register.iran.liara.run/apiv1'
-
 createApp(App).use(store).use(router).mount('#app')
